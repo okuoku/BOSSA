@@ -161,6 +161,15 @@ COMMON_SRCS+=PosixSerialPort.cpp BSDPortFactory.cpp
 
 endif
 
+# Cygwin (Same as Linux)
+ifeq ($(OS),CYGWIN_)
+COMMON_SRCS+=PosixSerialPort.cpp LinuxPortFactory.cpp
+MACHINE:=$(shell uname -m)
+
+install: strip
+	tar cvzf $(BINDIR)/bossa-$(MACHINE)-$(VERSION).tgz -C $(BINDIR) bossa$(EXE) bossac$(EXE) bossash$(EXE)
+endif
+
 #
 # Object files
 #

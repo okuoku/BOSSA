@@ -51,7 +51,7 @@ public:
 #if defined(__WIN32__)
 #include "WinPortFactory.h"
 typedef WinPortFactory PortFactory;
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__CYGWIN__)
 #include "LinuxPortFactory.h"
 typedef LinuxPortFactory PortFactory;
 #elif defined(__APPLE__)
